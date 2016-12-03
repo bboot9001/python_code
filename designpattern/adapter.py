@@ -14,7 +14,7 @@ from abc import ABCMeta, abstractmethod
 
 class Target(object):
     """
-    客户锁期待的接口, 目标可以使具体或抽象的类, 也可以是接口
+    客户所期待的接口, 目标可以使具体或抽象的类, 也可以是接口
     """
     __metaclass__ = ABCMeta
 

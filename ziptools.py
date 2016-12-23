@@ -1,5 +1,6 @@
 import os,sys  
 import zipfile  
+"""解压缩文件小工具"""
   
 def zip_dir(dirname, zipfilename):  
     filelist = []  

@@ -9,18 +9,25 @@ def myfunc():
 """ 示例二 使用函数在函数的执行前后分别附加额外功能"""
 
 def deco(func):
-    print "before myfunc called."
+    print "before myfunc2 called."
     func()
-    print "after myfunc called."
+    print "after myfunc2 called."
     return func
 
 def myfunc2():
-    print "myfunc called."
+    print "myfunc2 called."
 
-myfunc2 = deco(myfunc2)
+#myfunc2 = deco(myfunc2)
+
+@deco
+def myfunc3():
+    print "myfunc3 called."
+
 
 if __name__ == '__main__':
 #    myfunc()
 #    myfunc()
-     myfunc2()
-     myfunc2()
+#    myfunc2()
+#    myfunc2()
+    myfunc3()
+    myfunc3()

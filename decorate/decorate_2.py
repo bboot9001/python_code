@@ -12,6 +12,11 @@ def use_logging(func):
 def bar():
     print "I am a bar"
 
+@use_logging
+def foo():
+    print "I am a foo"
+
 bar = use_logging(bar)
 
 bar()
+foo()

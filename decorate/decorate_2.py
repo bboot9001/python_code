@@ -12,11 +12,56 @@ def use_logging(func):
 def bar():
     print "I am a bar"
 
+#普通装饰器
+bar = use_logging(bar)
+
+#使用语法糖
 @use_logging
 def foo():
     print "I am a foo"
 
-bar = use_logging(bar)
+#带参数的装饰器
+def decorate_para(parameter):
+    def decorate(func):
+        def wrapper(*args,**kwargs):
+            if parameter == "para":
+                print "this is a parameter func!"
+            return func(*args,**kwargs)
+        return wrapper
+    return decorate
 
-bar()
-foo()
+
+@decorate_para(parameter="para")
+def foo_plus(name="foo"):
+    print "I am not %s" % name
+
+#类装饰器
+class ClassDecorate(object):
+    def __init__(self,func):
+        self.func = func
+    
+    def __call__(self):
+        print "class decorate start"
+        self.func()
+        print "class decorate end"
+    
+@ClassDecorate
+def ClassFuc():
+    print "class func"
+
+
+        
+
+
+
+
+
+if __name__ ==  "__main__":
+    #普通装饰器
+    bar()
+    #语法糖装饰器
+    foo()
+    #带参数的装饰器
+    foo_plus()
+    #类装饰器
+    ClassFuc()

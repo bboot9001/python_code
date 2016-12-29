@@ -66,7 +66,21 @@ def decorate_info_func():
 
 
         
+#装饰器的顺序
+def decorate_order(para):
+    def decorate(func):
+        @wraps(func)
+        def decorate_innner(*args,**kwargs):
+            print "decorate %s" %para
+            return func(*args,**kwargs)
+        return decorate_innner
+    return decorate
 
+@decorate_order(para='1111')
+@decorate_order(para="2222")
+@decorate_order(para="3333")
+def order(para):
+    print "main func %s" %para
 
 
 
@@ -84,4 +98,7 @@ if __name__ ==  "__main__":
     decorate_info_func()
     decorate_info_func.__name__
     decorate_info_func.__doc__
+    #装饰器的顺序
+    order(para="#######")
+
 

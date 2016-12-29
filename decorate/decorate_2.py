@@ -50,6 +50,21 @@ def ClassFuc():
     print "class func"
 
 
+#在装饰器中保留原函数的信息
+from functools import wraps
+def decorate_info(func):
+    @wraps(func)
+    def wrapper(*args,**kwargs):
+        print "info remain"
+        return func(*args,**kwargs)
+    return wrapper
+
+@decorate_info
+def decorate_info_func():
+    """函数信息"""
+    print "this is info func"
+
+
         
 
 
@@ -65,3 +80,8 @@ if __name__ ==  "__main__":
     foo_plus()
     #类装饰器
     ClassFuc()
+    #保存函数的原来信息
+    decorate_info_func()
+    decorate_info_func.__name__
+    decorate_info_func.__doc__
+
